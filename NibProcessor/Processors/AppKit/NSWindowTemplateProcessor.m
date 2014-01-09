@@ -94,8 +94,114 @@
 	}
 	if (aString != nil)
     {
+        aString = [self checkString:aString key:item value:value];
+    }
+	if (aString != nil)
+    {
         [output setObject:aString forKey:item];
     }
+}
+
+- (NSString *)checkString:(NSString *)aString key:(id)item value:(id)value
+{
+	id object = nil;
+	
+	NSString *aClassName = [self getProcessedClassName];
+	
+	if ([aClassName hasSuffix:@"Cell"])
+	{
+		if ([aClassName isEqualToString:@"NSImageCell"])
+		{
+			Class aClass = NSClassFromString(@"NSImageView");
+			
+			if (aClass)
+			{
+				object = [[[[aClass alloc] initWithFrame:NSZeroRect] autorelease] cell];
+			}
+		}
+		else
+		{
+			Class aClass = NSClassFromString([aClassName substringToIndex:[aClassName length] - [@"Cell" length]]);
+			
+			if (aClass)
+			{
+				object = [[[[aClass alloc] initWithFrame:NSZeroRect] autorelease] cell];
+			}
+		}
+	}
+	else if ([aClassName isEqualToString:@"NSArrayController"])
+	{
+		Class aClass = NSClassFromString(@"NSArrayController");
+		
+		if (aClass)
+		{
+			object = [[[aClass alloc] init] autorelease];
+		}
+	}
+	else if ([aClassName isEqualToString:@"NSWindow"])
+	{
+		Class aClass = NSClassFromString(@"NSWindow");
+		
+		if (aClass)
+		{
+			object = [[[aClass alloc] initWithContentRect:NSZeroRect styleMask:NSTitledWindowMask | NSClosableWindowMask | NSMiniaturizableWindowMask | NSResizableWindowMask backing:NSBackingStoreBuffered defer:YES] autorelease];
+		}
+	}
+	else
+	{
+		Class aClass = NSClassFromString(aClassName);
+		
+		if (aClass)
+		{
+			object = [[[aClass alloc] initWithFrame:NSZeroRect] autorelease];
+		}
+	}
+	
+	if (object)
+	{
+		SEL selector = NSSelectorFromString(item);
+		
+		BOOL flag = [object respondsToSelector:selector];
+		
+		if (!flag)
+		{
+			selector = NSSelectorFromString([NSString stringWithFormat:@"%@%@", @"is", [item stringByReplacingCharactersInRange:NSMakeRange(0, 1) withString:[[item substringToIndex:1] uppercaseString]]]);
+			flag = [object respondsToSelector:selector];
+		}
+		
+		if (flag)
+		{
+			id anObject = [object valueForKey:item];
+			
+			if (anObject)
+			{
+				if (CFGetTypeID(value) == CFGetTypeID(anObject))
+				{
+					if (CFGetTypeID(value) == CFStringGetTypeID())
+					{
+						if ([value isEqualToString:anObject])
+						{
+#ifdef DEBUG
+							aString = [NSString stringWithFormat:@"// default: %@", aString];
+#else
+							aString = nil;
+#endif
+						}
+					}
+					else if (value == anObject)
+					{
+#ifdef DEBUG
+						aString = [NSString stringWithFormat:@"// default: %@", aString];
+#else
+						aString = nil;
+#endif
+					}
+				}
+			}
+		}
+	}
+	
+	return aString;
 }
 
 - (NSString *)backingTypeString:(id)value

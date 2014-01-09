@@ -14,4 +14,6 @@
 - (NSString *)sizeString:(id)value;
 - (NSString *)styleMaskString:(id)value;
 
+- (NSString *)checkString:(NSString *)aString key:(id)item value:(id)value;
+
 @end

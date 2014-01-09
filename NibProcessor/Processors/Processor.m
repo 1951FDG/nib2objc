@@ -68,6 +68,7 @@
 #import "NSArrayControllerProcessor.h"
 #import "NSPopUpButtonProcessor.h"
 #import "NSPopUpButtonCellProcessor.h"
+#import "NSProgressIndicatorProcessor.h"
 
 @interface Processor (Protected)
 
@@ -140,6 +141,7 @@
 	else if ([klass isEqualToString:@"NSArrayController"]) processor = [[NSArrayControllerProcessor alloc] init];
 	else if ([klass isEqualToString:@"NSPopUpButton"]) processor = [[NSPopUpButtonProcessor alloc] init];
 	else if ([klass isEqualToString:@"NSPopUpButtonCell"]) processor = [[NSPopUpButtonCellProcessor alloc] init];
+	else if ([klass isEqualToString:@"NSProgressIndicator"]) processor = [[NSProgressIndicatorProcessor alloc] init];
 
     return [processor autorelease];
 }

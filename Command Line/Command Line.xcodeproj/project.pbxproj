@@ -75,6 +75,7 @@
 		C36F0DBC1508F3F600A96F84 /* NSViewProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = C36F0DA81508F3F600A96F84 /* NSViewProcessor.m */; };
 		C36F0DBD1508F3F600A96F84 /* NSWindowTemplateProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = C36F0DAA1508F3F600A96F84 /* NSWindowTemplateProcessor.m */; };
 		C36F0E051508F8BA00A96F84 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C36F0E041508F8BA00A96F84 /* AppKit.framework */; };
+		C38822BA17981D1B005FD315 /* NSProgressIndicatorProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = C38822B917981D1B005FD315 /* NSProgressIndicatorProcessor.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -225,6 +226,8 @@
 		C36F0DA91508F3F600A96F84 /* NSWindowTemplateProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSWindowTemplateProcessor.h; sourceTree = "<group>"; };
 		C36F0DAA1508F3F600A96F84 /* NSWindowTemplateProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSWindowTemplateProcessor.m; sourceTree = "<group>"; };
 		C36F0E041508F8BA00A96F84 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
+		C38822B817981D1B005FD315 /* NSProgressIndicatorProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSProgressIndicatorProcessor.h; sourceTree = "<group>"; };
+		C38822B917981D1B005FD315 /* NSProgressIndicatorProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSProgressIndicatorProcessor.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -442,6 +445,8 @@
 				C36F0DA81508F3F600A96F84 /* NSViewProcessor.m */,
 				C36F0DA91508F3F600A96F84 /* NSWindowTemplateProcessor.h */,
 				C36F0DAA1508F3F600A96F84 /* NSWindowTemplateProcessor.m */,
+				C38822B817981D1B005FD315 /* NSProgressIndicatorProcessor.h */,
+				C38822B917981D1B005FD315 /* NSProgressIndicatorProcessor.m */,
 			);
 			path = AppKit;
 			sourceTree = "<group>";
@@ -476,6 +481,7 @@
 			};
 			buildConfigurationList = 3A1CCECB14684E1200E639D4 /* Build configuration list for PBXProject "Command Line" */;
 			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
@@ -561,6 +567,7 @@
 				C36F0DBB1508F3F600A96F84 /* NSTextFieldProcessor.m in Sources */,
 				C36F0DBC1508F3F600A96F84 /* NSViewProcessor.m in Sources */,
 				C36F0DBD1508F3F600A96F84 /* NSWindowTemplateProcessor.m in Sources */,
+				C38822BA17981D1B005FD315 /* NSProgressIndicatorProcessor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

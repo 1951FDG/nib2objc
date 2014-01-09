@@ -122,7 +122,7 @@
 	if (object)
 	{
 		SEL selector = NSSelectorFromString(item);
-		
+
 		BOOL flag = [object respondsToSelector:selector];
 		
 		if (!flag)
@@ -240,19 +240,19 @@
     {
         float red, green, blue, alpha;
         sscanf([value UTF8String], "NSCalibratedRGBColorSpace %f %f %f %f", &red, &green, &blue, &alpha);
-        [color appendFormat:@"[NSColor colorWithCalibratedRed:(CGFloat)%f green:(CGFloat)%f blue:(CGFloat)%f alpha:(CGFloat)%1.1f]", red, green, blue, alpha];
+        [color appendFormat:@"[NSColor colorWithCalibratedRed:(CGFloat)%f green:(CGFloat)%f blue:(CGFloat)%f alpha:(CGFloat)%1.2f]", red, green, blue, alpha];
     }
     else if ([value hasPrefix:@"NSCalibratedWhiteColorSpace"])
     {
         float white, alpha;
         sscanf([value UTF8String], "NSCalibratedWhiteColorSpace %f %f", &white, &alpha);
-        [color appendFormat:@"[NSColor colorWithCalibratedWhite:(CGFloat)%f alpha:(CGFloat)%1.1f]", white, alpha];
+        [color appendFormat:@"[NSColor colorWithCalibratedWhite:(CGFloat)%f alpha:(CGFloat)%1.2f]", white, alpha];
     }
 	else if ([value hasPrefix:@"NSDeviceRGBColorSpace"])
     {
         float red, green, blue, alpha;
         sscanf([value UTF8String], "NSDeviceRGBColorSpace %f %f %f %f", &red, &green, &blue, &alpha);
-        [color appendFormat:@"[NSColor colorWithDeviceRed:(CGFloat)%f green:(CGFloat)%f blue:(CGFloat)%f alpha:(CGFloat)%1.1f]", red, green, blue, alpha];
+        [color appendFormat:@"[NSColor colorWithDeviceRed:(CGFloat)%f green:(CGFloat)%f blue:(CGFloat)%f alpha:(CGFloat)%1.2f]", red, green, blue, alpha];
     }
 	else if ([value hasPrefix:@"NSNamedColorSpace"])
     {
@@ -260,6 +260,12 @@
 		sscanf([value UTF8String], "NSNamedColorSpace %s %s", &listName, &colorName);
 		[color appendFormat:@"[NSColor colorWithCatalogName:@\"%@\" colorName:@\"%@\"]", [NSString stringWithUTF8String:listName], [NSString stringWithUTF8String:colorName]];
 	}
+	else if ([value hasPrefix:@"NSDeviceWhiteColorSpace"])
+    {
+        float white, alpha;
+        sscanf([value UTF8String], "NSDeviceWhiteColorSpace %f %f", &white, &alpha);
+        [color appendFormat:@"[NSColor colorWithDeviceWhite:(CGFloat)%f alpha:(CGFloat)%1.2f]", white, alpha];
+    }
 	else
     {
         [color appendString:value];
